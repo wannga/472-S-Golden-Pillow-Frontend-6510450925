@@ -1,0 +1,190 @@
+/* General Layout */
+/* Ensure the entire page layout is consistent */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #FBF2ED;
+    font-family: 'Krona One', sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+/* Profile container layout */
+.profile-container {
+    display: grid;
+    grid-template-columns: 2fr 3fr; /* Adjust column sizes to make user info section wider */
+    gap: 20px;
+    width: 90%;
+    height: 90vh;
+    background-color: #FFFFF5;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Sidebar layout */
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    background-color: #FFF7F0;
+    padding: 30px;
+    border-radius: 20px;
+    height: 100%; /* Ensure it takes full height of the parent container */
+    justify-content: center; /* Center the content vertically */
+   
+}
+
+
+.edit-details-button {
+    background-color: #ADAF95;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.user-info {
+    background-color: #FFFFF5;
+    padding: 20px;
+    border-radius: 10px;
+    width: 100%; 
+    text-align: left;
+    font-size: 16px;
+}
+
+.orders-section {
+    background-color: #FFFFFF;
+    border-radius: 20px;
+    padding: 20px;
+    overflow-y: auto;
+    max-height: 450px;
+    height: 60vh;
+}
+
+.profile-input {
+    display: none;
+}
+
+.user-info {
+    text-align: left;
+    width: 90%;
+    height: 80%;
+    background-color: #FFFFF5;
+    padding: 10px;
+    border-radius: 15px;
+    margin-top: 10px;
+}
+
+.user-info span {
+    display: block;
+    margin-bottom: 6px;
+    font-size: 16px;
+}
+
+.edit-details-button {
+    background-color: #ADAF95;
+    border: none;
+    border-radius: 30px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-family: 'Krona One', sans-serif;
+    margin-top: 10px;
+}
+
+.sidebar-icons {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    position: absolute;
+    top: 40px;
+    left: 50px;
+}
+
+.icon {
+    font-size: 40px;
+    color: #5C0202;
+    cursor: pointer;
+}
+
+/* Orders Section */
+.orders-section {
+    background-color: #FFFFFF;
+    border-radius: 30px;
+    padding: 20px;
+    max-height: 450px;
+    overflow-y: auto;
+    height: 55vh;
+}
+
+.orders-section .section-title {
+    font-family: 'Gravitas One', sans-serif;
+    font-size: 32px;
+    color: #5C0202;
+    text-align: center;
+    margin-bottom: 15px;
+
+}
+
+.order-card {
+    background-color: #FBBCBC;
+    border-radius: 20px;
+    padding: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.order-card div {
+    display: flex;
+    flex-direction: column;
+}
+
+.order-card span {
+    font-size: 16px;
+}
+
+.check-button {
+    background-color: #5C0202;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+.orders-section::-webkit-scrollbar {
+    width: 8px;
+}
+
+.orders-section::-webkit-scrollbar-thumb {
+    background-color: #EEEEEE;
+    border-radius: 10px;
+}
+
+.header h1 {
+    grid-column: span 2;
+    text-align: center;
+    font-family: 'Gravitas One', sans-serif;
+    font-size: 70px;
+    color: #5C0202;
+    margin-bottom: 30px;
+    
+}
+
+.logout-button {
+    background-color: #CF5B5F;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 10px 20px;
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 20px;
+}

@@ -1,0 +1,128 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #FBF2ED;
+    font-family: 'Krona One', sans-serif;
+  }
+  
+  .container {
+    width: 120%;
+    max-width: 1440px;
+    margin: 20px auto;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    margin-left: -60px;
+  }
+  
+  .back-buttonlist {
+    background-color: #E9BDB3;
+    color: #000;
+    border: none;
+    border-radius: 30px;
+    padding: 10px 30px;
+    font-size: 24px;
+    cursor: pointer;
+    position: absolute;
+    top: 11px;
+    left: 20px;
+  }
+  
+  .product-list-title {
+    text-align: center;
+    font-family: 'Gravitas One', sans-serif;
+    font-size: 64px;
+    color: #5C0202;
+    margin-bottom: 30px;
+  }
+  
+  .product-listlist {
+    background-color: #ffffff;
+    border-radius: 30px;
+    overflow-y: auto;
+    flex-grow: 1;
+    padding-right: 10px;
+    gap: 30px;
+   
+  }
+  
+  .product-cardlist {
+    display: flex;
+    background-color: #ADAF95;
+    border-radius: 30px;
+    margin-bottom: 30px;
+    padding: 20px 90px ;
+    align-items: center;
+    gap: 50px;
+  }
+  
+  .product-card.out-of-stock {
+    background-color: #FBBCBC;
+  }
+  
+  .product-imagelist {
+    width: 300px;
+    height: 300px;
+    border-radius: 20px;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    margin-left: -30px; 
+    margin-top: -150px;
+  }
+  
+  .product-detailslist {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 15px;
+    font-size: 18px;
+    font-weight: 600;
+  }
+  
+  .detail-rowlist {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #FFFFFF;
+    padding: 10px 30px; /* Adjust padding for alignment */
+    border-radius: 20px;
+    height: 50px;
+    width: 100%;
+  }
+  
+  .detail-labellist {
+    font-size: 20px;
+    font-weight: 600;
+    color: #000;
+    flex-basis: 40%;
+    text-align: left;
+  }
+  
+  .detail-valuelist {
+    width: 100%;
+    height: 100%;
+    background-color: #E9BDB3;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 10px;
+    flex-basis: 60%;
+  }
+  
+  .statuslist {
+    font-size: 20px;
+    font-weight: 600;
+    padding: 5px 20px;
+    border-radius: 30px;
+    background-color: #E9BDB3;
+  }
+  
+  .in-stock {
+    color: #027E19;
+  }
+  
+  .out-of-stock {
+    color: red;
+  }

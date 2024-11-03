@@ -1,0 +1,112 @@
+/* login page */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Krona One', sans-serif;
+    background: #FBF2ED;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+  }
+  
+  .login-container {
+    position: relative;
+    width: 100%;
+    max-width: 1440px;
+    height: 100vh;
+    margin: auto;
+    background: #FBF2ED;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .rectangle {
+    width: 800px; /* Adjusted for better central focus */
+    max-width: 90%;
+    /*border: 3px solid #5C0202;*/
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 50px;
+    box-sizing: border-box;
+    background: #FBF2ED;
+  }
+  
+  .golden-pillow {
+    font-family: 'Gravitas One', cursive;
+    font-size: 96px;
+    line-height: 122px;
+    color: #5C0202;
+    text-align: center;
+    margin-bottom: 40px; /* Adjusted for better spacing */
+  }
+  
+  .form-field {
+    background: #ADAF95;
+    border-radius: 30px;
+    width: 381px;
+    height: 56px;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-family: 'Krona One', sans-serif;
+    color: #000000;
+    margin-left: 120px;
+    margin-bottom: 20px; /* Spacing between username and password fields */
+  }
+  
+  .forget-password {
+    color: rgba(255, 0, 0, 0.53);
+    font-size: 13px;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 20px; /* Space between forget-password and the button */
+  }
+
+  .sign-in-btn-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .sign-in-btn {
+    background: #E9BDB3;
+    border-radius: 30px;
+    width: 171px; /* Adjusted width to match your design */
+    height: 56px;
+    font-family: 'Krona One', sans-serif;
+    font-size: 16px;
+    color: #000000;
+    border: none;
+    cursor: pointer;
+    margin-top: 50px; /* Increased spacing to better separate the button from the text fields */
+    align-self: center; /* Ensure it's centered within the parent container */
+    margin-left: 0px; /* Adjust this to move button horizontally */
+    
+  }
+  
+  .sign-in-btn:hover {
+    opacity: 0.9;
+  }
+  
+  .link-container {
+    margin-top: 30px; /* Adjusted for more spacing to match the design */
+    font-family: 'Krona One', sans-serif;
+    font-size: 16px;
+    color: #000000;
+    text-align: center; /* Center the text */
+  }
+  
+  .link-container a {
+    color: #A33E90;
+    text-decoration: none;
+  }
+  
+  .link-container a:hover {
+    text-decoration: underline;
+  }
+  

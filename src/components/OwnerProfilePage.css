@@ -1,0 +1,167 @@
+/* General Styling */
+body, html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Krona One', sans-serif;
+    background-color: #FBF2ED;
+}
+
+/* Dashboard Container */
+.owner-dashboard-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 1440px;
+    padding: 20px;
+    box-sizing: border-box;
+    gap: 20px;
+}
+
+/* Header Styling */
+.header-dashboard {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    background-color: #FFF5F2;
+    padding: 10px 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.header-dashboard h1 {
+    font-family: 'Gravitas One', sans-serif;
+    font-size: 36px;
+    color: #5C0202;
+}
+
+.logout-button {
+    background-color: #8a1a01;
+    color: #ffffff;
+    border: none;
+    border-radius: 50px;
+    padding: 10px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.logout-button:hover {
+    background-color: #a3320b;
+}
+
+/* Dashboard Layout */
+.dashboard-layout {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 24px;
+    width: 100%;
+    max-width: 1200px;
+}
+
+/* Section Cards */
+.card {
+    background-color: #FFFFF5;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* User Info Section */
+.user-info-section, .admin-list-section {
+    min-height: 200px;
+}
+
+/* Admin List Section */
+.admin-list-scrollable {
+    max-height: 260px;
+    overflow-y: auto;
+}
+
+.admin-card {
+    background-color: #F5E1D3;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+/* Sales Section */
+.sales-section {
+    grid-column: span 2;
+}
+
+.sales-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.sales-header h2 {
+    font-family: 'Gravitas One', sans-serif;
+    font-size: 24px;
+}
+
+.month-select {
+    background-color: #E9BDB3;
+    border-radius: 20px;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.sales-summary-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 16px;
+}
+
+.sales-summary-card {
+    padding: 15px;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Income Section */
+/* Income Section */
+.income-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.income-summary-content {
+    max-height: 300px; /* Set a maximum height */
+    overflow-y: auto;  /* Enable vertical scrolling */
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 16px;
+}
+
+.income-summary-card {
+    padding: 15px;
+    background-color: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+
+/* Media Queries */
+@media (max-width: 768px) {
+    .header-dashboard {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .dashboard-layout {
+        grid-template-columns: 1fr;
+    }
+}

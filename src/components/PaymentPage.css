@@ -1,0 +1,151 @@
+/* PaymentPage.css */
+
+.payment-container {
+  position: relative;
+  width: 90%;
+  max-width: 1100px;
+  margin: 50px auto;
+  background: #fbf2ed;
+  padding: 40px;
+  border-radius: 20px;
+  box-sizing: border-box;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: visible; 
+}
+
+
+.payment-title {
+  text-align: center;
+  font-family: 'Gravitas One', sans-serif;
+  font-size: 56px;
+  color: #5c0202;
+  margin-bottom: 30px;
+}
+
+.payment-cancel-button {
+  position: fixed; 
+  top: 10px; 
+  left: 10px; 
+  padding: 10px 20px;
+  background: #e9bdb3;
+  border-radius: 30px;
+  font-family: 'Krona One', sans-serif;
+  font-size: 18px;
+  color: #000;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 1000; 
+  width: auto;
+  max-width: 150px; 
+  text-align: center;
+}
+
+.payment-cancel-button:hover {
+  background: #d4a8a1;
+  transform: scale(1.05);
+}
+
+
+
+.payment-details {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  margin-top: 20px;
+}
+
+.qr-code-section, 
+.order-details {
+  width: 60%;
+  background: #fffff5;
+  border-radius: 22px;
+  padding: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.qr-title {
+  font-family: 'Krona One', sans-serif;
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.qr-code {
+  width: 240px;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 2px solid #000;
+  margin: 15px 0;
+}
+
+.total-amount {
+  text-align: center;
+  font-family: 'Krona One', sans-serif;
+  font-size: 24px;
+  margin-top: 10px;
+}
+
+.order-details p {
+  font-family: 'Krona One', sans-serif;
+  font-size: 20px;
+  margin-bottom: 10px;
+  text-align: left;
+  width: 100%;
+}
+
+.upload-section {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.upload-section p {
+  font-family: 'Krona One', sans-serif;
+  font-size: 22px;
+  margin-bottom: 10px;
+}
+
+.upload-section input[type='file'] {
+  display: block;
+  margin: 10px auto;
+}
+
+.upload-button, 
+.done-button {
+  margin: 15px;
+  padding: 12px 40px;
+  font-family: 'Krona One', sans-serif;
+  font-size: 18px;
+  border-radius: 30px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.upload-button {
+  background: #95abaf;
+  color: #000;
+}
+
+.upload-button:hover {
+  background: #85a1a5;
+  transform: scale(1.05);
+}
+
+.done-button {
+  background: #8fcf97;
+  color: #000;
+}
+
+.done-button:hover {
+  background: #7ab882;
+  transform: scale(1.05);
+}
+
+.done-button:disabled {
+  background: #cccccc;
+  cursor: not-allowed;
+}

@@ -1,0 +1,246 @@
+.pagecontainer {
+    overflow-y: auto;
+    padding: 50px 100px;
+    height: 100vh;
+}
+
+.admin-check-order-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 30px;
+    background: #fbf2ed;
+    font-family: 'Krona One', sans-serif;
+    height: 130vh;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header h1 {
+    font-family: 'Gravitas One', cursive;
+    font-size: 52px;
+    color: #5c0202;
+    margin-left: 360px;
+    margin-top: -60px;
+}
+
+.back-buttonador {
+    background-color: #E9BDB3;
+    color: #000;
+    border: none;
+    border-radius: 30px;
+    padding: 10px 30px;
+    font-size: 24px;
+    cursor: pointer;
+    position: absolute;
+    top: 11px;
+    left: 20px;
+}
+
+.see-slip-button {
+    background-color: #e9bdb3;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    color: #000; 
+}
+
+.accept-order-button {
+    background-color: #e9bdb3;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    color: #000; 
+}
+.reject-order-button {
+    background-color: #e9bdb3;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    color: #000; 
+}
+
+.Packedstatus-button {
+    background-color: #e9bdb3;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    color: #000;
+    
+}
+.delivery-status-sentbutton {
+    background-color: #e9bdb3;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    color: #000;
+    
+}
+
+.print-receiptbutton {
+    background-color: #e9bdb3;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    color: #000;
+    
+}
+
+.packed-red-button {
+    background-color: #f3b3b3;
+}
+
+.packed-green-button {
+    background-color: #d3f3d8;
+}
+
+
+.confirm-button {
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #000;
+    border: none;
+    cursor: pointer;
+    margin-right: -120px;
+    margin-top: -100px;
+    background-color: #adaf95;
+}
+
+.productcontent-container {
+    display: flex;
+    gap: 20px;
+    padding-top: 20px;
+}
+
+.ordercontent-container {
+    display: flex;
+    gap: 20px;
+}
+
+.orderdetails {
+    flex: 1;
+    background: #f6d5d5;
+    padding: 20px;
+    border-radius: 20px;
+    margin-bottom: 40px;
+}
+
+.orderdetails p {
+    font-size: 18px;
+    color: #5c0202;
+    margin: 10px 0;
+}
+
+
+
+.detail-inforow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #FFFFFF;
+    padding: 10px 20px;
+    border-radius: 20px;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.detail-infolabel {
+    font-size: 18px;
+    font-weight: bold;
+    color: #5c0202;
+}
+
+.detail-infovalue {
+    display: flex;
+    gap: 10px;
+}
+
+
+
+
+
+
+.product-card img {
+    width: 80px;
+    height: 80px;
+    border-radius: 15px;
+    flex-shrink: 0;
+    margin-top: 10px;
+    margin-left: 3px;
+}
+
+.product-listad {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #ffffff;
+    border-radius: 20px;
+    padding: 30px;
+    overflow-y: auto;
+    max-height: 70vh;
+    box-sizing: border-box;
+}
+
+.product-card {
+    background: #f7e2e2;
+    padding: 20px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.product-infoad {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    flex-grow: 1;
+}
+
+.product-infoad p {
+    font-size: 16px;
+    color: #5c0202;
+    margin: 0;
+}
+
+.packed-label {
+    background-color: #f3b3b3;
+    color: #fff;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+    cursor: pointer;
+    min-width: 80px;
+}
+
+.packed-label.pack-green {
+    background-color: #aff9ba;
+}
+
+.packed-label.pack-red {
+    background-color: #c45353;
+}

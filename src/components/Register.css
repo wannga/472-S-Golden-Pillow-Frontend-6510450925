@@ -1,0 +1,110 @@
+/* Reset some default styles to prevent body or container issues */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Ensure the body takes the full height and prevents unwanted scrollbars */
+body, html {
+  height: 100%;
+  overflow: hidden; /* Prevent unnecessary body scroll */
+}
+
+/* Styling for the overall container */
+.register-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  height: 100vh;
+  width: 100vw; /* Ensure it spans full width */
+  background-color: #fae6e1;
+  padding: 40px 20px;
+  overflow-y: auto; /* Allow vertical scrolling only */
+  scroll-behavior: smooth; /* Smooth scrolling effect */
+}
+
+
+
+/* Title styling */
+.titlesg {
+  font-size: 3rem;
+  font-family: 'Gravitas One', cursive;
+  font-weight: bold;
+  color: #7d2d27;
+  margin-bottom: 40px;
+}
+
+/* Section title styling */
+.section-title {
+  font-size: 1.8rem;
+  font-family: 'Gravitas One', cursive;
+  font-weight: bold;
+  color: #7d2d27;
+  margin: 30px 0 10px;
+  align-self: flex-start;
+}
+
+/* Form styling */
+.register-form {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  max-width: 900px;
+  gap: 30px;
+}
+
+/* Input group for username, password, and confirm password */
+.input-group {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+/* User details and address sections with more space */
+.user-details, .address-details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px 30px;
+}
+
+/* Input field styling */
+.register-form input {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  background-color: #f0c3be;
+  border-radius: 20px;
+  font-size: 1rem;
+  outline: none;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.register-form input:focus {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Confirm button styling */
+.confirm-buttonsg {
+  align-self: center;
+  padding: 15px 40px;
+  background-color: #6f614f;
+  color: white;
+  border: none;
+  border-radius: 15px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 30px;
+}
+
+.confirm-button:hover {
+  background-color: #574e41;
+}
+
+/* Ensure proper spacing at the bottom to avoid cutting off the form */
+.register-form {
+  margin-bottom: 50px;
+}

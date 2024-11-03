@@ -1,0 +1,136 @@
+/* HomePage.css */
+
+/* General page styling */
+.home-page-container {
+    position: relative;
+    width: 100%;
+    max-width: 1440px;
+    height: 100vh;
+    background: #FBF2ED;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  /* Header bar styling */
+  .header-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 79px;
+    background: #ADAF95;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 50px;
+    box-sizing: border-box;
+  }
+  
+  .logo {
+    font-family: 'Gravitas One', cursive;
+    font-size: 36px;
+    color: #5C0202;
+  }
+  
+  .nav-buttons {
+    display: flex;
+    gap: 20px;
+  }
+  
+  .login-button,
+  .cart-button,
+  .profile-button {
+    background: #E9BDB3;
+    border-radius: 30px;
+    border: none;
+    padding: 10px 20px;
+    font-family: 'Krona One', sans-serif;
+    font-size: 16px;
+    color: #5C0202;
+    cursor: pointer;
+  }
+  
+  .login-button:hover,
+  .cart-button:hover,
+  .profile-button:hover {
+    opacity: 0.8;
+  }
+  
+  /* Product display styling */
+  .product-display {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 130px;
+    width: 100%;
+    height: calc(100vh - 130px);
+    box-sizing: border-box;
+  }
+  
+  .nav-arrow {
+    background: none;
+    border: none;
+    font-size: 90px;
+    color: #780505;
+    cursor: pointer;
+  }
+  
+  .product-info {
+    text-align: center;
+    width: 800px;
+    padding: 40px;
+    background: #FFFFFF;
+    border-radius: 58px;
+    box-shadow: 0 4px 90px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    margin-top: -50px;
+  }
+  
+  .product-name,
+  .product-grade {
+    font-family: 'Gravitas One', cursive;
+    font-size: 58px;
+    color: #780505;
+  }
+  
+  .product-image-homepage {
+    width: 250px;
+    height: auto;
+    margin-top: 10px;
+  }
+  
+  .product-details {
+    margin-top: 20px;
+    font-family: 'Krona One', sans-serif;
+    font-size: 24px;
+    color: #5C0202;
+  }
+  
+  .product-lot,
+  .product-price,
+  .product-amount {
+    margin: 10px 0;
+  }
+  
+  .add-to-cart-button {
+    background: #E9BDB3;
+    border-radius: 30px;
+    border: none;
+    padding: 10px 30px;
+    font-family: 'Krona One', sans-serif;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+  
+  .add-to-cart-button:hover {
+    opacity: 0.8;
+  }

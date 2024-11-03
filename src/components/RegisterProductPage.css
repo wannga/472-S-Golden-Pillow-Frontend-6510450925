@@ -1,0 +1,113 @@
+body {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: #FBF2ED;
+    margin: 0;
+    font-family: 'Krona One', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .container {
+    position: relative;
+    max-width: 1200px;
+    width: 130%;
+    padding: 20px;
+  }
+  
+  .back-btn, .confirm-btn {
+    position: absolute;
+    top: 20px;
+    padding: 10px 30px;
+    background: #E9BDB3;
+    color: #000;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 24px;
+  }
+  
+  .back-btn {
+    left: 10px;
+  }
+  
+  .confirm-btn {
+    right: 10px;
+    background: #ADAF95;
+  }
+  
+  .register-product {
+    font-family: 'Gravitas One', sans-serif;
+    font-size: 48px;
+    line-height: 56px;
+    text-align: center;
+    color: #5C0202;
+    margin-top: 60px;
+    margin-bottom: 40px;
+  }
+  
+  .main-content {
+    display: flex;
+    gap: 40px;
+    margin-top: 20px;
+  }
+  
+  .image-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  
+  .image-section img {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 20px;
+  }
+  
+  
+  .upload-btn {
+    width: 200px;
+    height: 40px;
+    background: #95ABAF;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: black;
+  }
+  
+  .form-section {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 100%;
+  }
+  
+  .form-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #FFFFFF;
+    border-radius: 15px;
+    padding: 15px;
+    height: 50px;
+  }
+  
+  .form-label {
+    font-size: 20px;
+    color: #000000;
+  }
+  
+  .form-input {
+    width: 60%;
+    height: 30px;
+    background: #E9BDB3;
+    border: none;
+    border-radius: 10px;
+    padding-left: 10px;
+  }
+  

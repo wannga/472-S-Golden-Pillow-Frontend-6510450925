@@ -1,0 +1,236 @@
+/* General Cart Container */
+.cart-container {
+    position: relative;
+    max-width: 1024px;
+    width: 90%;
+    min-height: 100vh;
+    background: #FBF2ED;
+    padding: 20px 40px;
+    margin: 0 auto;
+    box-sizing: border-box;
+    overflow: hidden; /* Prevent scrollbars for the full container */
+}
+
+/* Your Cart Title */
+.cart-title {
+    text-align: center;
+    font-family: 'Gravitas One', cursive;
+    font-size: 64px;
+    line-height: 81px;
+    color: #5C0202;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    position: sticky;
+    top: 0;
+    background: #FBF2ED;
+    z-index: 10;
+    padding: 10px 0;
+    box-shadow: 0 0px 0px rgba(0, 0, 0, 0.1);
+}
+
+/* Back Button */
+.back-buttoncart {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 25px;
+    background: #E9BDB3;
+    border-radius: 30px;
+    font-family: 'Krona One', sans-serif;
+    font-size: 18px;
+    color: #000000;
+    border: none;
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: all 0.3s;
+}
+
+.back-button:hover {
+    background: #d4a8a1;
+    transform: scale(1.05);
+}
+
+/* Cart Items Container */
+.cart-items-container {
+    margin: 20px auto;
+    max-width: 920px; /* Reduced width to add more spacing on the sides */
+    height: auto;
+    max-height: calc(100vh - 300px); /* Adjust max-height to fit the view while accounting for other elements */
+    overflow-y: auto;
+    overflow-x: hidden; /* Remove horizontal scrolling */
+    background: #FFFFFF;
+    border-radius: 20px;
+    padding: 20px;
+    box-sizing: border-box;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Individual Cart Item */
+.cart-item {
+    display: flex;
+    align-items: center;
+    padding: 15px 20px;
+    gap: 20px;
+    width: calc(100% - 40px); /* Reduce the width to create more right-side space */
+    height: auto;
+    background: #FBF2ED;
+    border-radius: 20px;
+    margin: 0 auto 20px; /* Center the cart item horizontally and add bottom margin */
+    position: relative;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s;
+}
+
+.cart-item:hover {
+    transform: scale(1.02);
+}
+
+/* Product Image */
+.product-imagecart {
+    width: 180px;
+    height: 130px;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    
+}
+
+
+/* Product Info */
+.product-infocart {
+    text-align: center;
+    width: 500px;
+    padding: 20px;
+    background: #FFFFFF;
+    border-radius: 58px;
+    box-shadow: 0 4px 90px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+
+.product-lot-grade,
+.product-price,
+.product-amount {
+    font-family: 'Krona One', sans-serif;
+    font-size: 22px;
+    line-height: 28px;
+    color: #780505;
+    margin: 5px 0;
+    text-align: left; /* ตั้งค่าให้ตัวหนังสือแต่ละบรรทัดอยู่ชิดซ้าย */
+}
+
+
+/* Cancel Button */
+.cart-cancel-button {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background: #F69F9F;
+    border-radius: 20px;
+    font-family: 'Krona One', sans-serif;
+    font-size: 16px;
+    color: #000000;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.cart-cancel-button:hover {
+    background: #f08787;
+    transform: scale(1.05);
+}
+
+/* Amount Control */
+.amount-control {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: auto;
+    height: 40px;
+    background: #FFD5D5;
+    border-radius: 10px;
+    margin-top: 15px;
+    padding: 5px;
+    gap: 5px; 
+    margin-left: 15px; /* Move the amount control a little to the right */
+}
+
+.amount-button {
+    width: 35px;
+    height: 35px;
+    background: #FFFFFF;
+    border-radius: 10px;
+    font-family: 'Krona One', sans-serif;
+    font-size: 24px;
+    color: #000000;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.amount-button:hover {
+    background: #f0e5e5;
+    transform: scale(1.1);
+}
+
+/* Cart Actions Container */
+.cart-actions-container {
+    display: flex;
+    justify-content: space-between; /* Ensure buttons are on opposite sides */
+    align-items: center;
+    max-width: 960px;
+    margin: 0 auto; /* Center the container horizontally */
+    padding: 20px 0; /* Add padding above and below for spacing */
+    width: 100%; /* Ensure it stretches to fit available space */
+}
+
+/* Cancel All Button */
+.cancel-all-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 50px;
+    background: #E9BDB3;
+    border-radius: 30px;
+    font-family: 'Krona One', sans-serif;
+    font-size: 18px;
+    color: #000000;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.cancel-all-button:hover {
+    background: #d4a8a1;
+    transform: scale(1.05);
+}
+
+/* Pay All Button */
+.pay-all-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    height: 50px;
+    background: #ADAF95;
+    border-radius: 30px;
+    font-family: 'Krona One', sans-serif;
+    font-size: 18px;
+    color: #000000;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.pay-all-button:hover {
+    background: #a3a883;
+    transform: scale(1.05);
+}

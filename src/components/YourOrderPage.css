@@ -1,0 +1,171 @@
+/* General Container */
+.order-page-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #FBF2ED;
+    width: 100%;
+    max-width: 1440px;
+    height: 100vh;
+    padding: 40px;
+    box-sizing: border-box;
+    gap: 20px; /* Adjusted for better spacing */
+}
+
+/* Header */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+    margin-bottom: 20px;
+}
+
+h11 {
+    font-family: 'Gravitas One', sans-serif;
+    font-size: 64px;
+    color: #5C0202;
+}
+
+.back-to-profile-button {
+    background-color: #E9BDB3;
+    border: none;
+    border-radius: 100px;
+    padding: 15px 30px;
+    font-family: 'Krona One', sans-serif;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.back-to-home-button {
+    background-color: #E9BDB3;
+    border: none;
+    border-radius: 100px;
+    padding: 15px 30px;
+    font-family: 'Krona One', sans-serif;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Layout for Left and Right Section */
+.order-layout {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 80px; /* Reduced gap for tighter layout */
+    width: 100%;
+    max-width: 1200px;
+}
+
+/* Left Section */
+.left-section {
+    display: flex;
+    flex-direction: column;
+    gap: 60px; /* Adjusted gap for alignment */
+}
+
+.order-info {
+    background-color: #FFFFF5;
+    border-radius: 20px;
+    padding: 20px;
+    width: 100%; 
+}
+
+.order-info p {
+    font-family: 'Krona One', sans-serif;
+    font-size: 20px;
+    margin: 10px 0; 
+}
+
+/* Delivery Status Section */
+.delivery-status-container h2 {
+    font-family: 'Krona One', sans-serif;
+    font-size: 24px;
+    margin-bottom: 10px; /* Reduced margin for compactness */
+    margin-left: -60px;
+}
+
+.status {
+    width: 100%;
+    text-align: center;
+    padding: 10px; 
+    border-radius: 84px;
+    font-family: 'Krona One', sans-serif;
+    font-size: 20px;
+    margin-left: -60px;
+}
+
+.delivered {
+    background-color: #97CE9F;
+}
+
+.pending {
+    background-color: #F2D8B1;
+}
+
+/* Receipt Section */
+.receipt-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Adjusted gap for better fit */
+    
+    
+}
+
+
+.receipt-image {
+    width: 100%;
+    height: auto;
+    
+  }
+  
+  
+
+
+
+/* Right Section */
+.right-section {
+    display: flex;
+    flex-direction: column;
+    gap: 30px; /* Adjusted gap for cleaner look */
+}
+
+/* Scrollable Product List */
+.product-list {
+    max-height: 400px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Adjusted gap for tighter product list */
+}
+
+.product-item {
+    display: flex;
+    align-items: center;
+    background-color: #FBF2ED;
+    border-radius: 20px;
+    padding: 10px; 
+    gap: 15px;
+}
+
+.product-imageorder {
+    width: 150px; 
+    height: 150px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.product-infoorder {
+    text-align: center;
+    width: 400px;
+    padding: 40px;
+    background: #FFFFFF;
+    border-radius: 58px;
+    box-shadow: 0 4px 90px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    
+  }
