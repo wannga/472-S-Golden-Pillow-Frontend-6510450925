@@ -9,8 +9,26 @@ function CreateCoupon() {
       coupon_status: '',
     });
 
+    const checkCouponCode = async (coupon_code) => {
+      try {
+        const response = await fetch(`http://localhost:13889/coupon/check-coupon/${coupon_code}`);
+        if (response.status === 409) {
+          alert('This coupon code is already taken');
+          return false;
+        }
+        return true;
+      } catch (error) {
+        console.error('Error checking coupon code:', error);
+        alert('An error occurred while checking the coupon code.');
+        return false;
+      }
+    };
+
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    const isCouponCodeAvailable = await checkCouponCode(couponData.coupon_code);
+    if (!isCouponCodeAvailable) return;
 
     try {
       const response = await fetch('http://localhost:13889/coupon/createCoupon', {
