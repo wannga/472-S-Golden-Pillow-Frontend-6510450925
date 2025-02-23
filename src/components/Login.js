@@ -31,6 +31,7 @@ function Login() {
         console.log('User ID:', userId); // Ensure this is not null
   
         localStorage.setItem('userId', userId);
+        localStorage.setItem('username', username);
   
         // Redirect based on user role
         if (data.user.role === 'client') {

@@ -15,6 +15,7 @@ import ProductListPage from './components/ProductListPage.js';
 import AdminCheckOrderPage from './components/AdminCheckOrderPage.js';
 import AddAdminStaffPage from './components/AddAdminStaffPage.js';
 import CheckEmployeeInfoPage from './components/CheckEmployeeInfoPage.js';
+import ProductReviewPage from './components/ProductReviewPage.js';
 
 function App() {
   return (
