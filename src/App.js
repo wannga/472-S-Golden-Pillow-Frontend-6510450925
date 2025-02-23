@@ -40,6 +40,7 @@ function App() {
           <Route path="/CreateCouponPage" element={<CreateCouponPage />} />
           <Route path="/addRole" element={<AddAdminStaffPage />} />
           <Route path="/profileEmployee/:staffId" element={<CheckEmployeeInfoPage />} />
+          <Route path='/reviews' element={<ProductReviewPage/>}/>
         </Routes>
       </div>
     </Router>
