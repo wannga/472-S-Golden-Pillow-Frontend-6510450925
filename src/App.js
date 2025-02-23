@@ -14,6 +14,8 @@ import OrderHistoryPage from './components/OrderHistoryPage.js';
 import ProductListPage from './components/ProductListPage.js';
 import AdminCheckOrderPage from './components/AdminCheckOrderPage.js';
 import CreateCouponPage from './components/CreateCouponPage.js';
+import AddAdminStaffPage from './components/AddAdminStaffPage.js';
+import CheckEmployeeInfoPage from './components/CheckEmployeeInfoPage.js';
 
 function App() {
   return (
@@ -35,6 +37,8 @@ function App() {
           <Route path="/ProductList" element={<ProductListPage />} />
           <Route path="/AdminCheck/:orderId" element={<AdminCheckOrderPage />} />
           <Route path="/CreateCouponPage" element={<CreateCouponPage />} />
+          <Route path="/addRole" element={<AddAdminStaffPage />} />
+          <Route path="/profileEmployee/:staffId" element={<CheckEmployeeInfoPage />} />
         </Routes>
       </div>
     </Router>
