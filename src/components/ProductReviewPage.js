@@ -15,22 +15,31 @@ const ProductReviewPage = () => {
   const [selectedStar, setSelectedStar] = useState(null);
   const [newReview, setNewReview] = useState({ star: 5, comment: '' });
 
-  useEffect(() => {
-    if (product.lot_id && product.grade) {
-      fetch(`http://localhost:13889/reviews?lot_id=${product.lot_id}&grade=${product.grade}`)
-        .then((response) => response.json())
-        .then((data) => {
-          setReviews(data);
-        })
-        .catch((error) => {
-          console.error('Error fetching reviews:', error);
-        });
+  const fetchReviews = async (star) => {
+    try {
+      const response = await fetch(`http://localhost:13889/reviews?lot_id=${product.lot_id}&grade=${product.grade}${star ? `&star=${star}` : ''}`);
+      const data = await response.json();
+      console.log('Fetched reviews:', data); // เพิ่ม log เพื่อตรวจสอบข้อมูลที่ได้
+      setReviews(data);
+    } catch (error) {
+      console.error('Error fetching reviews:', error);
     }
-  }, [product.lot_id, product.grade]);
+  }; 
 
   const filterReviews = (star) => {
-    setSelectedStar(star);
+    setSelectedStar(star !== null ? Number(star) : null);
   };
+
+  const filteredReviews = selectedStar
+  ? reviews.filter((review) => Number(review.star) === Number(selectedStar))
+  : reviews;
+
+  useEffect(() => {
+    fetchReviews(selectedStar);
+    console.log('Selected Star:', selectedStar);
+    console.log('Fetched Reviews:', reviews);
+  }, [product.lot_id, product.grade, selectedStar]);
+
 
   const handleInputChange = (event) => {
     setNewReview({ ...newReview, [event.target.name]: event.target.value });
@@ -94,10 +103,6 @@ const ProductReviewPage = () => {
       console.log('by user:', username);
     }
   };
-
-  const filteredReviews = selectedStar
-    ? reviews.filter((review) => review.star === selectedStar)
-    : reviews;
 
   return (
     <div className="review-page-container">
