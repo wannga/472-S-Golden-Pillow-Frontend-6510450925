@@ -13,6 +13,7 @@ import RegisterProductPage from './components/RegisterProductPage.js';
 import OrderHistoryPage from './components/OrderHistoryPage.js';
 import ProductListPage from './components/ProductListPage.js';
 import AdminCheckOrderPage from './components/AdminCheckOrderPage.js';
+import CreateCouponPage from './components/CreateCouponPage.js';
 import AddAdminStaffPage from './components/AddAdminStaffPage.js';
 import CheckEmployeeInfoPage from './components/CheckEmployeeInfoPage.js';
 import ProductReviewPage from './components/ProductReviewPage.js';
@@ -36,6 +37,7 @@ function App() {
           <Route path="/OrderHistory" element={<OrderHistoryPage />} />
           <Route path="/ProductList" element={<ProductListPage />} />
           <Route path="/AdminCheck/:orderId" element={<AdminCheckOrderPage />} />
+          <Route path="/CreateCouponPage" element={<CreateCouponPage />} />
           <Route path="/addRole" element={<AddAdminStaffPage />} />
           <Route path="/profileEmployee/:staffId" element={<CheckEmployeeInfoPage />} />
         </Routes>
