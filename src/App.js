@@ -17,6 +17,8 @@ import CreateCouponPage from './components/CreateCouponPage.js';
 import AddAdminStaffPage from './components/AddAdminStaffPage.js';
 import CheckEmployeeInfoPage from './components/CheckEmployeeInfoPage.js';
 import ProductReviewPage from './components/ProductReviewPage.js';
+import CheckPackedOrderPage from './components/CheckPackedOrderPage.js'
+import CheckDeliveryOrderPage from './components/CheckDeliveryOrderPage.js'
 
 function App() {
   return (
@@ -41,6 +43,9 @@ function App() {
           <Route path="/addRole" element={<AddAdminStaffPage />} />
           <Route path="/profileEmployee/:staffId" element={<CheckEmployeeInfoPage />} />
           <Route path='/reviews' element={<ProductReviewPage/>}/>
+          <Route path="/packStaff/:userId" element={<CheckPackedOrderPage />} />
+          <Route path="/deliverStaff/:userId" element={<CheckDeliveryOrderPage />} />
+
         </Routes>
       </div>
     </Router>
