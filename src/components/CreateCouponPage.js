@@ -1,7 +1,9 @@
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import "./CreateCouponPage.css";
 
 function CreateCoupon() {
+  const navigate = useNavigate();
   const [couponData, setCouponData] = useState({
       discount_details: '',
       coupon_code: '',
@@ -72,7 +74,7 @@ function CreateCoupon() {
   return (
     <div className="create-coupon-container">
       <div>
-        <button className="back-button-create-coupon">Back</button>
+        <button onClick={() => navigate('/AdminProfilePage')} className="back-button-create-coupon">Back</button>
       </div>
 
       <h1 className="header-text">Create Coupons!</h1>
