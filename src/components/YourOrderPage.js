@@ -13,6 +13,22 @@ const YourOrderPage = () => {
   const [receiptPath, setReceiptPath] = useState(null);
   const [allProducts, setAllProducts] = useState([]);
 
+  const handleReview = (line) => {
+    const username = localStorage.getItem('username') || "Guest"; // ดึง username จาก localStorage
+    const productDetails = findProductDetails(line.lotId, line.grade); // หาข้อมูลสินค้า
+  
+    navigate("/order/review", {
+      state: {
+        order_id: orderDetails.orderId,
+        lot_id: line.lotId,
+        grade: line.grade,
+        username,
+        product_image: productDetails ? productDetails.image_path : "default-durian.jpg"
+      }
+    });
+  };
+  
+
   useEffect(() => {
     const fetchOrderDetails = async () => {
       try {
@@ -189,25 +205,26 @@ const YourOrderPage = () => {
           </div>
 
           <div className="product-list">
-  {orderDetails.orderLines.map((line, index) => {
-    const productDetails = findProductDetails(line.lotId, line.grade);
+            {orderDetails.orderLines.map((line, index) => {
+              const productDetails = findProductDetails(line.lotId, line.grade);
 
-    return (
-      <div className="product-item" key={index}>
-        <img
-          src={`http://localhost:13889/${productDetails.image_path}`}
-          alt={line.lotId}
-          className="product-imageorder"
-        />
-        <div className="product-infoorder">
-          <h3>Product Lot: {line.lotId}</h3>
-          <p>Grade: {line.grade}</p>
-          <p>Amount: {line.amount}</p>
-        </div>
-      </div>
-    );
-  })}
-</div>
+              return (
+                <div className="product-item" key={index}>
+                  <img
+                    src={`http://localhost:13889/${productDetails.image_path}`}
+                    alt={line.lotId}
+                    className="product-imageorder"
+                  />
+                  <div className="product-infoorder">
+                    <h3>Product Lot: {line.lotId}</h3>
+                    <p>Grade: {line.grade}</p>
+                    <p>Amount: {line.amount}</p>
+                  </div>
+                  <button className="review-button" onClick={() => handleReview(line)}>Review</button>
+                </div>
+              );
+            })}
+          </div>
 
         </div>
       </div>

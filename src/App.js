@@ -19,6 +19,7 @@ import CheckEmployeeInfoPage from './components/CheckEmployeeInfoPage.js';
 import ProductReviewPage from './components/ProductReviewPage.js';
 import CheckPackedOrderPage from './components/CheckPackedOrderPage.js'
 import CheckDeliveryOrderPage from './components/CheckDeliveryOrderPage.js'
+import ReviewPage from './components/ReviewPage.js';
 
 function App() {
   return (
@@ -45,6 +46,7 @@ function App() {
           <Route path='/reviews' element={<ProductReviewPage/>}/>
           <Route path="/packStaff/:userId" element={<CheckPackedOrderPage />} />
           <Route path="/deliverStaff/:userId" element={<CheckDeliveryOrderPage />} />
+          <Route path='/order/review' element={<ReviewPage/>}/>
 
         </Routes>
       </div>
