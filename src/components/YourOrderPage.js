@@ -8,9 +8,26 @@ const YourOrderPage = () => {
   const navigate = useNavigate();
   const [orderDetails, setOrderDetails] = useState(null);
   const userId = localStorage.getItem('userId');
+  const [allDeliverOrders, setAllDeliverOrders] = useState([]);
   const [allOrders, setAllOrders] = useState([]);
   const [receiptPath, setReceiptPath] = useState(null);
   const [allProducts, setAllProducts] = useState([]);
+
+  const handleReview = (line) => {
+    const username = localStorage.getItem('username') || "Guest"; // ดึง username จาก localStorage
+    const productDetails = findProductDetails(line.lotId, line.grade); // หาข้อมูลสินค้า
+  
+    navigate("/order/review", {
+      state: {
+        order_id: orderDetails.orderId,
+        lot_id: line.lotId,
+        grade: line.grade,
+        username,
+        product_image: productDetails ? productDetails.image_path : "default-durian.jpg"
+      }
+    });
+  };
+  
 
   useEffect(() => {
     const fetchOrderDetails = async () => {
@@ -30,6 +47,15 @@ const YourOrderPage = () => {
         setAllOrders(response.data);
       } catch (error) {
         console.error('Error fetching orders:', error);
+      }
+    };
+
+    const fetchDeliverOrders = async () => {
+      try {
+        const response = await axios.get('http://localhost:13889/delivered-orders');
+        setAllDeliverOrders(response.data);
+      } catch (error) {
+        console.error('Error fetching deliver orders:', error);
       }
     };
 
@@ -56,7 +82,7 @@ const YourOrderPage = () => {
         console.error('Error fetching products:', error);
       }
     };
-
+    fetchDeliverOrders();
     fetchAllProducts();
     fetchOrderDetails();
     fetchOrders();
@@ -92,7 +118,18 @@ const YourOrderPage = () => {
     return orderIdDetail;
   };
 
+  const findOrderEms = (orderId) => {
+    const orderEms= allDeliverOrders.find(
+      (orderEms) => orderEms.order_id === parseInt(orderId) // Make sure orderId is an integer
+    );
+    if (!orderEms) {
+      console.warn(`orderEms not found for orderId: ${orderId}`);
+    }
+    return orderEms;
+  };
+
   const orderIdDetail = findorderDetails(orderId);
+  const orderEms = findOrderEms(orderId);
 
   if (!orderDetails) {
     return <p className="loading">Loading order details...</p>;
@@ -136,7 +173,7 @@ const YourOrderPage = () => {
                 }}
               >
                 {orderIdDetail.delivery_status === 'sent the packet'
-                  ? 'Your order has been delivered'
+                  ? <p>{orderEms.ems_code}</p>
                   : 'In the process to be delivered'}
               </div>
             ) : (
@@ -168,25 +205,26 @@ const YourOrderPage = () => {
           </div>
 
           <div className="product-list">
-  {orderDetails.orderLines.map((line, index) => {
-    const productDetails = findProductDetails(line.lotId, line.grade);
+            {orderDetails.orderLines.map((line, index) => {
+              const productDetails = findProductDetails(line.lotId, line.grade);
 
-    return (
-      <div className="product-item" key={index}>
-        <img
-          src={`http://localhost:13889/${productDetails.image_path}`}
-          alt={line.lotId}
-          className="product-imageorder"
-        />
-        <div className="product-infoorder">
-          <h3>Product Lot: {line.lotId}</h3>
-          <p>Grade: {line.grade}</p>
-          <p>Amount: {line.amount}</p>
-        </div>
-      </div>
-    );
-  })}
-</div>
+              return (
+                <div className="product-item" key={index}>
+                  <img
+                    src={`http://localhost:13889/${productDetails.image_path}`}
+                    alt={line.lotId}
+                    className="product-imageorder"
+                  />
+                  <div className="product-infoorder">
+                    <h3>Product Lot: {line.lotId}</h3>
+                    <p>Grade: {line.grade}</p>
+                    <p>Amount: {line.amount}</p>
+                  </div>
+                  <button className="review-button" onClick={() => handleReview(line)}>Review</button>
+                </div>
+              );
+            })}
+          </div>
 
         </div>
       </div>

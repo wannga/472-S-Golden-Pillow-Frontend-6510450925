@@ -1,0 +1,164 @@
+.review-page-container {
+    background-color: #fdf3f0;
+    padding: 20px;
+    text-align: center;
+    font-family: 'Krona One', 'sans-serif';
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh; /* ใช้ความสูงเต็มหน้าจอ */
+    overflow: hidden; /* ป้องกันการเลื่อนทั้งหน้า */
+  }
+
+.back-button {
+    position: absolute; /* ทำให้ปุ่มกลับอยู่ในตำแหน่งที่ต้องการ */
+    top: 20px; /* ระยะห่างจากด้านบน */
+    left: 20px; /* ระยะห่างจากด้านซ้าย */
+    background: #f4a8a8;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.review-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    background: #ffe0e0;
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    font-family: 'Krona One';
+    font-size: 24px;
+    color: #5C0202;
+    width: 600px;
+}
+
+.durian-image {
+    width: 80px;
+    height: auto;
+}
+
+.review-average {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.review-filters {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 10px 0;
+}
+
+.filter-button {
+    background: #c98787;
+    border: none;
+    padding: 8px 15px;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.filter-button.selected {
+    background-color: #f0a6a6;
+    color: white;
+}
+
+.filter-button.selected .star {
+    color: #ffcc00; /* เปลี่ยนดาวให้สว่าง */
+}
+
+.review-list {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    width: 600px;
+    overflow-y: auto; /* เพิ่ม scrollbar เมื่อมีรีวิวเยอะ */
+    max-height: 60vh;
+}
+
+.review-header .username {
+    font-weight: bold;
+}
+
+.review-rating {
+    font-size: 20px;
+    margin: 5px 0;
+}
+
+.review-comment {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    margin: 10px 0;
+}
+
+.review-card {
+    background: #ffebeb;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: left;
+    margin: 2px;
+    position: relative; /* เพิ่ม position: relative สำหรับการจัดตำแหน่งภายใน */
+}
+
+.review-header2 {
+    display: flex;
+    justify-content: space-between; /* จัดให้ชื่อผู้ใช้และปุ่มอยู่ด้านข้างกัน */
+    align-items: center; /* จัดให้อยู่กลางแนวตั้ง */
+}
+
+.like-dislike-buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* ระยะห่างระหว่างปุ่มและจำนวน */
+}
+
+.like-button,
+.dislike-button {
+    background: white; /* เปลี่ยนพื้นหลังเป็นสีขาว */
+    border: 2px solid #c98787; /* เพิ่มขอบให้กับปุ่ม */
+    padding: 5px 10px; /* ขนาดปุ่ม */
+    border-radius: 10px; /* ขอบมน */
+    cursor: pointer;
+    font-size: 18px; /* ขนาดฟอนต์ */
+    transition: background-color 0.3s; /* เพิ่มการเปลี่ยนสีพื้นหลังเมื่อ hover */
+}
+
+.like-button:hover,
+.dislike-button:hover {
+    background: #ffe0e0; /* สีพื้นหลังเมื่อ hover */
+}
+
+
+  .h2{
+    font-family: 'sans-serif';
+  }
+
+  /* ⭐ ทำให้ดาวในคอมเมนต์ชิดซ้าย */
+.review-card .rating {
+    justify-content: flex-start;
+    margin-left: 10px; /* ให้มีระยะห่างจากขอบซ้าย */
+}
+
+  .rating {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin-top: 10px;
+}
+  
+.star {
+    font-size: 24px;
+    cursor: pointer;
+    color: #d1a15a; /* สีพื้นฐานของดาว */
+}
+  
+.filled {
+    color: #ffcc00; /* สีของดาวที่ถูกเลือก */
+}

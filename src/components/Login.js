@@ -31,6 +31,7 @@ function Login() {
         console.log('User ID:', userId); // Ensure this is not null
   
         localStorage.setItem('userId', userId);
+        localStorage.setItem('username', username);
   
         // Redirect based on user role
         if (data.user.role === 'client') {
@@ -39,9 +40,12 @@ function Login() {
           navigate(`/admin/${userId}`);
         } else if (data.user.role === 'owner') {
           navigate(`/owner/${userId}`);
-        } else if (data.user.role === 'delivery staff') {
-          navigate(`/delivery-staff/${userId}`)
+        } else if (data.user.role === 'packaging staff') {
+          navigate(`/packStaff/${userId}`)
+        } else if (data.user.role === 'delivering staff') {
+          navigate(`/deliverStaff/${userId}`)
         }
+        
       } else {
         alert(data.message); // Show alert for invalid login
       }
