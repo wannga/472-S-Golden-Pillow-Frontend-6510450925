@@ -1,0 +1,141 @@
+.review-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #FBF2ED;
+    padding: 20px;
+  }
+  
+  .back-button {
+    background-color: #f8b7a1;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #5a1e00;
+    cursor: pointer;
+    margin-bottom: 20px;
+  }
+  
+  .review-header h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #5a1e00;
+  }
+  
+  .product-image {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-top: 10px;
+  }
+  
+  .review-box {  
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+    width: 60%;
+    margin-top: 20px;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .review-title {
+    font-size: 22px;
+    font-weight: bold;
+    color: #5a1e00;
+  }
+
+  .review-form {
+    background: #ffe5e5;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+    gap: 10px;
+    width: 100%;
+  }
+  
+  .h3-send{
+    display: flex;
+    gap: 300px;
+  }
+  
+  .rating {
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+    margin-top: 10px;
+  }
+  
+  .star {
+    font-size: 24px;
+    cursor: pointer;
+    color: #d1a15a;
+  }
+  
+  .filled {
+    color: #ffcc00;
+  }
+  
+  .comment-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+  }
+  
+  .comment-box {
+    width: 80%;
+    height: 80px;
+    border-radius: 10px;
+    padding: 10px;
+    border: 1px solid #5a1e00;
+    font-size: 16px;
+  }
+  
+  .edit-button {
+    background-color: #a08d6c;
+    border: none;
+    border-radius: 10px;
+    padding: 5px 15px;
+    font-size: 14px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .submit-button {
+    background-color: #7ac282;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    cursor: pointer;
+    margin-top: 20px;
+  }
+
+  textarea {
+    width: 100%; /* ทำให้กว้างเต็มพื้นที่ */
+    height: 100px; /* ทำให้สูงขึ้น */
+    padding: 10px; /* เพิ่มพื้นที่ภายใน */
+    border: 2px solid #ccc; /* ขอบที่มีสี */
+    border-radius: 5px; /* มุมที่มน */
+    resize: vertical; /* อนุญาตให้ปรับขนาดในแนวตั้ง */
+    font-size: 16px; /* ขนาดตัวอักษร */
+    transition: border-color 0.3s; /* เพิ่มการเปลี่ยนสีขอบ */
+  }
+  
+  textarea:focus {
+    border-color: #66afe9; /* เปลี่ยนสีขอบเมื่อมีการโฟกัส */
+    outline: none; /* ลบเส้นขอบที่มาตรฐาน */
+  }
+  

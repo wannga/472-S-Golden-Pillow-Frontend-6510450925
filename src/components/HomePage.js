@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import './HomePage.css';
 
 const HomePage = () => {
   const [products, setProducts] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [userData, setUserData] = useState([]);
   const navigate = useNavigate();
   const userId = localStorage.getItem('userId'); // Retrieve the userId from localStorage
+  const username = localStorage.getItem('username'); // Retrieve the userId from localStorage
 
   useEffect(() => {
     // Fetch product data from the backend API
@@ -30,6 +33,11 @@ const HomePage = () => {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + products.length) % products.length);
   };
 
+  const gotoProductReviewPage = (product) => {
+    const username = localStorage.getItem('username');
+    navigate('/reviews', { state: { product, userId, username } });
+  };  
+  
   const handleAddToCart = () => {
     const product = products[currentIndex];
     
@@ -100,12 +108,26 @@ const HomePage = () => {
             <p>Lot: {product ? product.lot_id : '-'}</p>
             <p>Price: {product ? `${product.sale_price} Baht` : '-'}</p>
             <p>Amount: {product ? product.RemainLotamount : '-'}</p>
-            <button className="add-to-cart-button" onClick={handleAddToCart}>
-              Add to Cart
-            </button>
-          </div>
-        </div>
 
+            <div className='product-review-cart'>
+                <div className="product-reviews">
+                  <h3>Product Reviews</h3>
+                  <div className="review-summary">
+                    <span className="rating">4.25</span>
+                    <span className="star">⭐</span>
+                    <button className="view-all-button" onClick={() => gotoProductReviewPage(product)}>
+                      view all
+                    </button>
+                  </div>
+                </div>
+                <div className='product-cart'>
+                  <button className="add-to-cart-button" onClick={handleAddToCart}>
+                    Add to Cart
+                  </button>
+              </div>
+            </div>
+            </div>
+          </div>
         <button className="nav-arrow right-arrow" onClick={handleNextProduct}>
           &#8594;
         </button>

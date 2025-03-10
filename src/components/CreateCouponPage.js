@@ -74,7 +74,7 @@ function CreateCoupon() {
   return (
     <div className="create-coupon-container">
       <div>
-        <button onClick={() => navigate('/AdminProfilePage')} className="back-button-create-coupon">Back</button>
+        <button onClick={() => navigate('/AdminCouponPage')} className="back-button-create-coupon">Back</button>
       </div>
 
       <h1 className="header-text">Create Coupons!</h1>
