@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { ChevronDown, ChevronUp } from "lucide-react";
 import './PaymentPage.css';
 
 const PaymentPage = () => {
@@ -8,6 +9,7 @@ const PaymentPage = () => {
   const { orderId } = useParams();
   const navigate = useNavigate();
   const userId = localStorage.getItem('userId'); // Retrieve the userId from localStorage
+  const [isOpen, setIsOpen] = useState(false);
 
   // Fetch order details when the component loads
   useEffect(() => {
@@ -113,6 +115,32 @@ const PaymentPage = () => {
           <p><strong>Address:</strong> {order.user?.address}</p>
         </div>
       </div>
+      {/*code using section*/}
+      <div className="w-80 bg-pink-100 rounded-lg p-4 shadow-md">
+        {/* Header Section - Toggle Button */}
+        <button
+          className="w-full flex justify-between items-center bg-pink-300 text-black font-semibold p-3 rounded-lg"
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          Use code for discount
+          {isOpen ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+        </button>
+
+        {/* Expandable Coupon Section */}
+        {isOpen && (
+          <div className="mt-2 flex justify-between items-center bg-pink-50 p-3 rounded-lg shadow-inner">
+            <input 
+            className="bg-gray-300 px-4 py-2 font-bold rounded-lg"
+            type="text"
+            name="coupon_code"
+            />
+            <button className="bg-green-400 text-white font-semibold px-4 py-2 rounded-lg">
+              USE
+            </button>
+          </div>
+        )}
+      </div>
+      {/* end of code using*/}
       <div className="upload-section">
         <p>Please attach a proof of payment/transfer slip.</p>
         <input type="file" onChange={handleFileUpload} />

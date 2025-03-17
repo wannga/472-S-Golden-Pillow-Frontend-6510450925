@@ -22,6 +22,7 @@ import ProductReviewPage from './components/ProductReviewPage.js';
 import CheckPackedOrderPage from './components/CheckPackedOrderPage.js'
 import CheckDeliveryOrderPage from './components/CheckDeliveryOrderPage.js'
 import ReviewPage from './components/ReviewPage.js';
+import EditCouponPage from './components/EditCouponPage.js';
 
 function App() {
   return (
@@ -51,6 +52,7 @@ function App() {
           <Route path="/packStaff/:userId" element={<CheckPackedOrderPage />} />
           <Route path="/deliverStaff/:userId" element={<CheckDeliveryOrderPage />} />
           <Route path='/order/review' element={<ReviewPage/>}/>
+          <Route path='/EditCouponPage/:coupon_id' element={<EditCouponPage/>}/>
 
         </Routes>
       </div>

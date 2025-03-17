@@ -1,9 +1,10 @@
-.create-coupon-container{
+.edit-coupon-container{
     flex-direction: column;
     justify-items: center;
+    align-items: center;
 }
 
-.back-button-create-coupon {
+.back-button-edit-coupon {
     background-color: #E9BDB3;
     color: #000;
     border: none;
@@ -23,7 +24,7 @@
 }
 
 /* the entire row */
-.create-coupon-input {
+.edit-coupon-data {
     align-items: center;
     width: fit-content;
     margin-top: 40px;
@@ -81,6 +82,7 @@
 
 .status-container span {
     font-weight: bold;
+    margin-right: 0%;
 }
 
 .status-button-selected {
@@ -90,10 +92,6 @@
     font-size: medium;
 
 }
-
-.status-space {
-    width: 20%;
-}
   
 .status-button-unselected {
     background-color: #e0b3b3; /* Light pink */
@@ -101,8 +99,8 @@
     font-size: medium;
 }
 
-.create-confirm-button {
-    margin: 15px;
+.edit-confirm-button {
+    margin-left: 30%;
     margin-top: 30px;
     padding: 12px 40px;
     font-family: 'Krona One', sans-serif;
