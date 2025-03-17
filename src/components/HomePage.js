@@ -11,6 +11,7 @@ const HomePage = () => {
   const userId = localStorage.getItem('userId'); // Retrieve the userId from localStorage
   const username = localStorage.getItem('username'); // Retrieve the userId from localStorage
 
+  
   useEffect(() => {
     // Fetch product data from the backend API
     fetch('http://localhost:13889/products')
@@ -24,6 +25,34 @@ const HomePage = () => {
         console.error('Error fetching product data:', error);
       });
   }, []);
+  
+const product = products[currentIndex];
+const [averageRating, setAverageRating] = useState(0);
+const [reviewCount, setReviewCount] = useState(0);
+
+useEffect(() => {
+  if (product?.lot_id && product?.grade) {
+      console.log("Fetching reviews for:", `"${product.lot_id}"`, `"${product.grade}"`);
+      axios.get(`http://localhost:13889/reviews1/average-rating`, {
+        params: {
+            lot_id: product.lot_id,
+            grade: product.grade
+        }
+      })
+      .then((response) => {
+        if (response.data) {
+            setAverageRating(Number(response.data.average) || 0);
+            setReviewCount(response.data.count ?? 0);
+            console.log(averageRating)
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching average rating:", error.response?.data);
+      });
+  }
+}, [product]);
+
+
 
   const handleNextProduct = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % products.length);
@@ -73,9 +102,6 @@ const HomePage = () => {
     }
   };
   
-  
-
-  const product = products[currentIndex];
 
   return (
     <div className="home-page-container">
@@ -113,8 +139,9 @@ const HomePage = () => {
                 <div className="product-reviews">
                   <h3>Product Reviews</h3>
                   <div className="review-summary">
-                    <span className="rating">4.25</span>
+                    <span className="rating">{averageRating}</span>
                     <span className="star">⭐</span>
+                    <span className="review-count">({reviewCount} reviews)</span>
                     <button className="view-all-button" onClick={() => gotoProductReviewPage(product)}>
                       view all
                     </button>
