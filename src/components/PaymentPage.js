@@ -10,6 +10,7 @@ const PaymentPage = () => {
   const navigate = useNavigate();
   const userId = localStorage.getItem('userId'); // Retrieve the userId from localStorage
   const [isOpen, setIsOpen] = useState(false);
+  const [discountedPrice, setDiscountedPrice] = useState(null);
 
   // Fetch order details when the component loads
   useEffect(() => {
@@ -89,6 +90,83 @@ const PaymentPage = () => {
       });
   };
 
+  const handleApplyCoupon = async () => {
+    const coupon_code = document.getElementById("coupon_code").value.trim();
+
+    if (!coupon_code) {
+        alert("Please enter a coupon code.");
+        return;
+    }
+
+    try {
+      const cartResponse = await fetch(`http://localhost:13889/cart/${userId}/item-count`, {
+        method: "GET",
+      });
+      
+      if (!cartResponse.ok) {
+          alert("Failed to fetch cart details");
+          return;
+      }
+      
+      const cartData = await cartResponse.json();
+      console.log("Cart Data:", cartData);
+
+      
+      // Extract totalAmount from the cart response
+      const totalAmount = cartData.totalAmount; 
+      console.log(totalAmount);
+
+        // Step 1: Verify if the coupon is valid
+        const verifyResponse = await fetch("http://localhost:13889/coupon/check-coupon-condition", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ 
+                total_price: order.total_price,
+                total_products: totalAmount,
+                coupon_code: coupon_code 
+            })
+        });
+
+        console.log(order.total_price);
+        console.log(order.total_products);
+
+        const verifyResult = await verifyResponse.json();
+
+        if (!verifyResponse.ok) {
+            alert(verifyResult.message);
+            return;
+        }
+
+        console.log(verifyResult.message); // "Coupon can be used"
+
+        // Step 2: Apply the discount
+        const discountResponse = await fetch("http://localhost:13889/coupon/coupon-discount", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ 
+                original_price: order.total_price, 
+                coupon_code: coupon_code 
+            })
+        });
+
+        const discountResult = await discountResponse.json();
+
+        if (discountResponse.ok) {
+            setDiscountedPrice(discountResult.discounted_price);
+            console.log("Coupon applied! Discounted price: " + discountResult.discounted_price + " Baht");
+            
+            // Disable coupon input and button after applying
+            document.getElementById("applyCoupon").disabled = true;
+            document.getElementById("coupon_code").disabled = true;
+        } else {
+            alert(discountResult.message);
+        }
+    } catch (error) {
+        console.error("Error applying coupon:", error);
+        alert("Failed to apply coupon. Please try again.");
+    }
+};
+
   return (
     <div className="payment-container">
       <button className="payment-cancel-button" onClick={handleCancelOrder}>
@@ -107,7 +185,10 @@ const PaymentPage = () => {
               e.target.src = '/images/placeholder.jpg'; // Fallback image
             }}
           />
-          <div className="total-amount">Total {order.total_price || '...'} Baht</div>
+          {/* <div className="total-amount">Total {order.total_price || '...'} Baht</div> */}
+          <div className="total-amount">
+            Total {discountedPrice !== null ? discountedPrice : order.total_price || '...'} Baht
+          </div>
         </div>
         <div className="order-details">
           <p><strong>Order ID:</strong> {orderId}</p>
@@ -116,10 +197,10 @@ const PaymentPage = () => {
         </div>
       </div>
       {/*code using section*/}
-      <div className="w-80 bg-pink-100 rounded-lg p-4 shadow-md">
+      <div>
         {/* Header Section - Toggle Button */}
         <button
-          className="w-full flex justify-between items-center bg-pink-300 text-black font-semibold p-3 rounded-lg"
+          className="code-input-header"
           onClick={() => setIsOpen(!isOpen)}
         >
           Use code for discount
@@ -128,13 +209,11 @@ const PaymentPage = () => {
 
         {/* Expandable Coupon Section */}
         {isOpen && (
-          <div className="mt-2 flex justify-between items-center bg-pink-50 p-3 rounded-lg shadow-inner">
+          <div className={`code-input-container ${isOpen ? "open" : ""}`}>
             <input 
-            className="bg-gray-300 px-4 py-2 font-bold rounded-lg"
-            type="text"
-            name="coupon_code"
-            />
-            <button className="bg-green-400 text-white font-semibold px-4 py-2 rounded-lg">
+            className="input-box"
+            type="text" id="coupon_code" placeholder="Enter Coupon Code"/>
+            <button className="use-button" id="applyCoupon" onClick={handleApplyCoupon}>
               USE
             </button>
           </div>

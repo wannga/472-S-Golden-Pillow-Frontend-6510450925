@@ -1,4 +1,10 @@
 /* PaymentPage.css */
+html, body {
+  height: 100%;
+  overflow-y: auto; /* Enables vertical scrolling */
+  margin: 0;
+  padding: 0;
+}
 
 .payment-container {
   position: relative;
@@ -10,7 +16,8 @@
   border-radius: 20px;
   box-sizing: border-box;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  overflow: visible; 
+  overflow: visible;
+  min-height: 100vh;
 }
 
 
@@ -20,6 +27,7 @@
   font-size: 56px;
   color: #5c0202;
   margin-bottom: 30px;
+  margin-top: 50px;
 }
 
 .payment-cancel-button {
@@ -148,4 +156,50 @@
 .done-button:disabled {
   background: #cccccc;
   cursor: not-allowed;
+}
+
+.use-button {
+  background: #8fcf97;
+  color: #000;
+}
+
+.input-box {
+  display: inline-block;
+  background-color: #D8D8D8;
+  padding: 8px;
+  border-radius: 10px;
+  border: none;
+  width: 15vw;
+  height: 38px;
+}
+
+.code-input-container {
+  background-color: #f2e6e2;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: max-height 0.3s ease-out;
+  overflow: hidden;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+}
+
+.code-input-container.open {
+  max-height: 80px;
+}
+
+.code-input-header {
+  background-color: #d2b5b3;
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  text-align: left;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  border-radius: 15px;
+  font-size: medium;
 }
