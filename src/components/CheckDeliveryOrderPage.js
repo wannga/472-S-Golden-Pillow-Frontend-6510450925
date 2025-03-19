@@ -64,7 +64,8 @@ function CheckDeliveryOrderPage() {
   const handleAddDelivery = async (e) => {
     e.preventDefault();
     try {
-      await axios.post(`http://localhost:13889/delivered-orders`, {
+      if (userData.role === "delivering staff") {
+         await axios.post(`http://localhost:13889/delivered-orders`, {
         order_id: orderId,
         ems_code: emsCode,
         staff_id: userId
@@ -76,6 +77,7 @@ function CheckDeliveryOrderPage() {
       });
       alert("Order delivery status updated to sent the packet.");
       window.location.reload();
+    }
     } catch (error) {
       console.error("Error updating delivery status status:", error);
       alert("Failed to update delivery status status.");
