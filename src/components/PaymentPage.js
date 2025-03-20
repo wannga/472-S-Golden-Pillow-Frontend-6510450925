@@ -155,9 +155,6 @@ const PaymentPage = () => {
             setDiscountedPrice(discountResult.discounted_price);
             console.log("Coupon applied! Discounted price: " + discountResult.discounted_price + " Baht");
             
-            // Disable coupon input and button after applying
-            document.getElementById("applyCoupon").disabled = true;
-            document.getElementById("coupon_code").disabled = true;
         } else {
             alert(discountResult.message);
         }
