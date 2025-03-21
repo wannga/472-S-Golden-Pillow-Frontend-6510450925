@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { ChevronDown, ChevronUp } from "lucide-react";
 import './PaymentPage.css';
@@ -11,6 +11,8 @@ const PaymentPage = () => {
   const userId = localStorage.getItem('userId'); // Retrieve the userId from localStorage
   const [isOpen, setIsOpen] = useState(false);
   const [discountedPrice, setDiscountedPrice] = useState(null);
+  const fileInputRef = useRef(null);
+  const [fileName, setFileName] = useState("");
 
   // Fetch order details when the component loads
   useEffect(() => {
@@ -39,6 +41,10 @@ const PaymentPage = () => {
       });
   };
 
+  const handleClick = () => {
+    fileInputRef.current.click();
+  };
+
   // Handle file upload
   const handleFileUpload = (event) => {
     const file = event.target.files[0]; // Get the selected file
@@ -55,6 +61,8 @@ const PaymentPage = () => {
         console.log('File uploaded and order updated:', data);
         setIsFileUploaded(true); // Set upload status to true
         alert('File uploaded successfully!');
+
+        setFileName(file.name);
       })
       .catch((error) => {
         console.error('Error uploading file:', error);
@@ -218,10 +226,22 @@ const PaymentPage = () => {
       </div>
       {/* end of code using*/}
       <div className="upload-section">
-        <p>Please attach a proof of payment/transfer slip.</p>
-        <input type="file" onChange={handleFileUpload} />
+        <p>{fileName ? `${fileName} attached` : "Please attach a proof of payment/transfer slip."}</p>
+        <div className='upload-button-container'>
+          <button className='upload-button' type='file' onClick={handleClick}>UPLOAD</button>
+        </div>
+        
+        <input
+          type="file"
+          ref={fileInputRef}
+          onChange={handleFileUpload}
+          style={{ display: "none" }}
+        />
+
+      </div>
+      <div className='done-button-container'>
         <button className="done-button" onClick={handleDone}>
-          DONE
+            DONE
         </button>
       </div>
     </div>

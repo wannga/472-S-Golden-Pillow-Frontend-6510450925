@@ -25,7 +25,7 @@ function CouponPage() {
 
   return (
     <div className="coupon-page-container">
-      <button onClick={() => navigate('/')} className="back-button-coupon">Back</button>
+      <button onClick={() => navigate('/home')} className="back-button-coupon">Back</button>
       <h1 className="header-text">Coupons!</h1>
       <div className="coupon-section">
         {coupons.map((coupon, index) => (
