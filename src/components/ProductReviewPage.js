@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import './ProductReviewPage.css';
+import axios from 'axios';
 
 const ProductReviewPage = () => {
   const location = useLocation();
@@ -68,6 +69,31 @@ const ProductReviewPage = () => {
     }
   };
 
+  const [averageRating, setAverageRating] = useState(0);
+const [reviewCount, setReviewCount] = useState(0);
+
+useEffect(() => {
+  if (product?.lot_id && product?.grade) {
+      console.log("Fetching reviews for:", `"${product.lot_id}"`, `"${product.grade}"`);
+      axios.get(`http://localhost:13889/reviews1/average-rating`, {
+        params: {
+            lot_id: product.lot_id,
+            grade: product.grade
+        }
+      })
+      .then((response) => {
+        if (response.data) {
+            setAverageRating(Number(response.data.average) || 0);
+            setReviewCount(response.data.count ?? 0);
+            console.log(averageRating)
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching average rating:", error.response?.data);
+      });
+  }
+}, [product]);
+
 
   return (
     <div className="review-page-container">
@@ -78,7 +104,7 @@ const ProductReviewPage = () => {
         <img src={`http://localhost:13889${product.image_path}`} alt="Durian" className="durian-image" />
       </div>
 
-      <p className="review-average">Average: 4.25 ⭐</p>
+      <span className="rating">{averageRating} ⭐ ({reviewCount} reviews)</span>
 
       {/* ปุ่มกรองดาว */}
         <div className="review-filters">
