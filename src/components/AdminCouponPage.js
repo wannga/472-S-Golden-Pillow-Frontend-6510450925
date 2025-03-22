@@ -39,7 +39,13 @@ function CouponPage() {
             {coupon.coupon_condition && (
               <div className="coupon-conditions">{coupon.coupon_condition}</div>
             )}
-            <button className="edit-button-coupon">Edit</button>
+            {/* Navigate to EditCouponPage with coupon ID */}
+            <button 
+              className="edit-button-coupon" 
+              onClick={() => navigate(`/EditCouponPage/${coupon.coupon_id}`)}
+            >
+              Edit
+            </button>
           </div>
         ))}
       </div>

@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
+import { ChevronDown, ChevronUp } from "lucide-react";
 import './PaymentPage.css';
 
 const PaymentPage = () => {
@@ -8,6 +9,10 @@ const PaymentPage = () => {
   const { orderId } = useParams();
   const navigate = useNavigate();
   const userId = localStorage.getItem('userId'); // Retrieve the userId from localStorage
+  const [isOpen, setIsOpen] = useState(false);
+  const [discountedPrice, setDiscountedPrice] = useState(null);
+  const fileInputRef = useRef(null);
+  const [fileName, setFileName] = useState("");
 
   // Fetch order details when the component loads
   useEffect(() => {
@@ -36,6 +41,10 @@ const PaymentPage = () => {
       });
   };
 
+  const handleClick = () => {
+    fileInputRef.current.click();
+  };
+
   // Handle file upload
   const handleFileUpload = (event) => {
     const file = event.target.files[0]; // Get the selected file
@@ -52,6 +61,8 @@ const PaymentPage = () => {
         console.log('File uploaded and order updated:', data);
         setIsFileUploaded(true); // Set upload status to true
         alert('File uploaded successfully!');
+
+        setFileName(file.name);
       })
       .catch((error) => {
         console.error('Error uploading file:', error);
@@ -87,6 +98,80 @@ const PaymentPage = () => {
       });
   };
 
+  const handleApplyCoupon = async () => {
+    const coupon_code = document.getElementById("coupon_code").value.trim();
+
+    if (!coupon_code) {
+        alert("Please enter a coupon code.");
+        return;
+    }
+
+    try {
+      const cartResponse = await fetch(`http://localhost:13889/cart/${userId}/item-count`, {
+        method: "GET",
+      });
+      
+      if (!cartResponse.ok) {
+          alert("Failed to fetch cart details");
+          return;
+      }
+      
+      const cartData = await cartResponse.json();
+      console.log("Cart Data:", cartData);
+
+      
+      // Extract totalAmount from the cart response
+      const totalAmount = cartData.totalAmount; 
+      console.log(totalAmount);
+
+        // Step 1: Verify if the coupon is valid
+        const verifyResponse = await fetch("http://localhost:13889/coupon/check-coupon-condition", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ 
+                total_price: order.total_price,
+                total_products: totalAmount,
+                coupon_code: coupon_code 
+            })
+        });
+
+        console.log(order.total_price);
+        console.log(order.total_products);
+
+        const verifyResult = await verifyResponse.json();
+
+        if (!verifyResponse.ok) {
+            alert(verifyResult.message);
+            return;
+        }
+
+        console.log(verifyResult.message); // "Coupon can be used"
+
+        // Step 2: Apply the discount
+        const discountResponse = await fetch("http://localhost:13889/coupon/coupon-discount", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ 
+                original_price: order.total_price, 
+                coupon_code: coupon_code 
+            })
+        });
+
+        const discountResult = await discountResponse.json();
+
+        if (discountResponse.ok) {
+            setDiscountedPrice(discountResult.discounted_price);
+            console.log("Coupon applied! Discounted price: " + discountResult.discounted_price + " Baht");
+            
+        } else {
+            alert(discountResult.message);
+        }
+    } catch (error) {
+        console.error("Error applying coupon:", error);
+        alert("Failed to apply coupon. Please try again.");
+    }
+};
+
   return (
     <div className="payment-container">
       <button className="payment-cancel-button" onClick={handleCancelOrder}>
@@ -105,7 +190,10 @@ const PaymentPage = () => {
               e.target.src = '/images/placeholder.jpg'; // Fallback image
             }}
           />
-          <div className="total-amount">Total {order.total_price || '...'} Baht</div>
+          {/* <div className="total-amount">Total {order.total_price || '...'} Baht</div> */}
+          <div className="total-amount">
+            Total {discountedPrice !== null ? discountedPrice : order.total_price || '...'} Baht
+          </div>
         </div>
         <div className="order-details">
           <p><strong>Order ID:</strong> {orderId}</p>
@@ -113,11 +201,47 @@ const PaymentPage = () => {
           <p><strong>Address:</strong> {order.user?.address}</p>
         </div>
       </div>
+      {/*code using section*/}
+      <div>
+        {/* Header Section - Toggle Button */}
+        <button
+          className="code-input-header"
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          Use code for discount
+          {isOpen ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+        </button>
+
+        {/* Expandable Coupon Section */}
+        {isOpen && (
+          <div className={`code-input-container ${isOpen ? "open" : ""}`}>
+            <input 
+            className="input-box"
+            type="text" id="coupon_code" placeholder="Enter Coupon Code"/>
+            <button className="use-button" id="applyCoupon" onClick={handleApplyCoupon}>
+              USE
+            </button>
+          </div>
+        )}
+      </div>
+      {/* end of code using*/}
       <div className="upload-section">
-        <p>Please attach a proof of payment/transfer slip.</p>
-        <input type="file" onChange={handleFileUpload} />
+        <p>{fileName ? `${fileName} attached` : "Please attach a proof of payment/transfer slip."}</p>
+        <div className='upload-button-container'>
+          <button className='upload-button' type='file' onClick={handleClick}>UPLOAD</button>
+        </div>
+        
+        <input
+          type="file"
+          ref={fileInputRef}
+          onChange={handleFileUpload}
+          style={{ display: "none" }}
+        />
+
+      </div>
+      <div className='done-button-container'>
         <button className="done-button" onClick={handleDone}>
-          DONE
+            DONE
         </button>
       </div>
     </div>

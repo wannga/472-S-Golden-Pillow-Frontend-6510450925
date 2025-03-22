@@ -112,6 +112,7 @@ useEffect(() => {
           <button className="login-button" onClick={() => navigate('/login')}>Log out</button>
           <button className="cart-button" onClick={() => navigate(`/cart/${userId}`)}>Cart</button>
           <button className="profile-button" onClick={() => navigate(`/profile/${userId}`)}>Profile</button>
+          <button className="profile-button" onClick={() => navigate("/CouponPage")}>Coupon</button>
         </div>
       </div>
 

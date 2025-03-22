@@ -125,6 +125,7 @@ function CreateCoupon() {
         {/* Status Selection */}
         <div className="status-container">
           <span>Status</span>
+          <div className="status-space"></div>
           <button
             onClick={() => setCouponData((prevData) => ({ ...prevData, coupon_status: "AVAILABLE" }))}
             className={couponData.coupon_status === "AVAILABLE" ? "status-button-selected" : "status-button-unselected"}
@@ -136,13 +137,13 @@ function CreateCoupon() {
             onClick={() => setCouponData((prevData) => ({ ...prevData, coupon_status: "UNAVAILABLE" }))}
             className={couponData.coupon_status === "UNAVAILABLE" ? "status-button-selected" : "status-button-unselected"}
           >
-            NOT AVAILABLE
+            UNAVAILABLE
           </button>
         </div>
       </div>
 
       {/* Confirm Button */}
-      <button type="submit" className="confirm-button" onClick={handleSubmit}>
+      <button type="submit" className="create-confirm-button" onClick={handleSubmit}>
         Confirm
       </button>
     </div>
