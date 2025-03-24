@@ -28,13 +28,15 @@ function RegisterProductPage() {
 
   const handleImageChange = (e) => {
     const file = e.target.files[0];
-    if (file) {
+    if (file  && file.type.startsWith('image/')) {
       setProductData((prevData) => ({
         ...prevData,
         image: file,
       }));
       setPreviewImage(URL.createObjectURL(file)); // Create a preview URL for the selected image
-    }
+    } else {
+      alert('Please select a valid image file.');
+    }	    
   };
 
   const handleSubmit = async () => {

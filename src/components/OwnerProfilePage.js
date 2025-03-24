@@ -3,12 +3,14 @@ import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import './OwnerProfilePage.css';
 
+
 function OwnerProfilePage() {
   const { userId } = useParams();
   const navigate = useNavigate();
   const [userData, setUserData] = useState(null);
   const [selectedMonth, setSelectedMonth] = useState("Months");
   const [adminUsers, setAdminUsers] = useState([]);
+  const [staffUsers, setStaffUsers] = useState([])
   const [salesSummary, setSalesSummary] = useState([]);
   const [incomeSummary, setIncomeSummary] = useState([]);
 
@@ -79,8 +81,20 @@ function OwnerProfilePage() {
       }
     };
 
+    const fetchStaffUsers = async () => {
+      try {
+        const response = await axios.get('http://localhost:13889/allusers');
+        const staffs = response.data.filter(user => user.role === 'packaging staff' || user.role === 'delivering staff');
+        console.log(staffs);
+        setStaffUsers(staffs);
+      } catch (error) {
+        console.error('Error fetching staff users:', error);
+      }
+    };
+
     fetchUserData();
     fetchAdminUsers();
+    fetchStaffUsers();
   }, [userId, navigate]);
 
   const handleMonthChange = (event) => {
@@ -89,12 +103,15 @@ function OwnerProfilePage() {
   };
 
   return (
+    <div className="owner-profile">
     <div className="owner-dashboard-container">
       <header className="header-dashboard">
         <h1>Owner Dashboard</h1>
-        <button className="logout-button" onClick={() => navigate('/login')}>Log out</button>
+        <div className="button-container">
+          <button className="add-role-button" onClick={() => navigate('/addRole')}>Add Admin and Staff</button>
+          <button className="logout-button" onClick={() => navigate('/login')}>Log out</button>
+        </div>
       </header>
-
       <div className="dashboard-layout">
         {/* User Info Section */}
         <div className="user-info-section card">
@@ -119,13 +136,42 @@ function OwnerProfilePage() {
             {adminUsers.length > 0 ? (
               adminUsers.map((admin) => (
                 <div key={admin.user_id} className="admin-card">
-                  <p><strong>Username:</strong> {admin.username}</p>
-                  <p><strong>Name:</strong> {admin.name} {admin.lastname}</p>
-                  <p><strong>Email:</strong> {admin.email}</p>
+                  <div className="card-container">
+                    <div>
+                      <p><strong>Username:</strong> {admin.username}</p>
+                      <p><strong>Name:</strong> {admin.name} {admin.lastname}</p>
+                      <p><strong>Email:</strong> {admin.email}</p>
+                    </div>
+                    <button className="check-button" onClick={() => navigate(`/profileEmployee/${admin.user_id}`)}>Check</button>
+                  </div>
                 </div>
               ))
             ) : (
               <p>No admin users found.</p>
+            )}
+          </div>
+        </div>
+
+        {/* Staff List Section */}
+        <div className="admin-list-section card">
+          <h2>Staff List</h2>
+          <div className="admin-list-scrollable">
+            {staffUsers.length > 0 ? (
+              staffUsers.map((staff) => (
+                  <div key={staff.user_id} className="admin-card">
+                    <div className="card-container">
+                    <div>
+                      <p><strong>Username:</strong> {staff.username}</p>
+                      <p><strong>Name:</strong> {staff.name} {staff.lastname}</p>
+                      <p><strong>Email:</strong> {staff.email}</p>
+                      <p><strong>Role:</strong> {staff.role}</p>
+                    </div>
+                    <button className="check-button" onClick={() => navigate(`/profileEmployee/${staff.user_id}`)}>Check</button>
+                  </div>
+                </div>
+              ))
+            ) : (
+              <p>No staff users found.</p>
             )}
           </div>
         </div>
@@ -186,6 +232,7 @@ function OwnerProfilePage() {
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 }

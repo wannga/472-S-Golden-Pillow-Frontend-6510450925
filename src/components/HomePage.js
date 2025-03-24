@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import './HomePage.css';
 
 const HomePage = () => {
   const [products, setProducts] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [userData, setUserData] = useState([]);
   const navigate = useNavigate();
   const userId = localStorage.getItem('userId'); // Retrieve the userId from localStorage
+  const username = localStorage.getItem('username'); // Retrieve the userId from localStorage
 
+  
   useEffect(() => {
     // Fetch product data from the backend API
     fetch('http://localhost:13889/products')
@@ -21,6 +25,34 @@ const HomePage = () => {
         console.error('Error fetching product data:', error);
       });
   }, []);
+  
+const product = products[currentIndex];
+const [averageRating, setAverageRating] = useState(0);
+const [reviewCount, setReviewCount] = useState(0);
+
+useEffect(() => {
+  if (product?.lot_id && product?.grade) {
+      console.log("Fetching reviews for:", `"${product.lot_id}"`, `"${product.grade}"`);
+      axios.get(`http://localhost:13889/reviews1/average-rating`, {
+        params: {
+            lot_id: product.lot_id,
+            grade: product.grade
+        }
+      })
+      .then((response) => {
+        if (response.data) {
+            setAverageRating(Number(response.data.average) || 0);
+            setReviewCount(response.data.count ?? 0);
+            console.log(averageRating)
+        }
+      })
+      .catch((error) => {
+        console.error("Error fetching average rating:", error.response?.data);
+      });
+  }
+}, [product]);
+
+
 
   const handleNextProduct = () => {
     setCurrentIndex((prevIndex) => (prevIndex + 1) % products.length);
@@ -30,6 +62,11 @@ const HomePage = () => {
     setCurrentIndex((prevIndex) => (prevIndex - 1 + products.length) % products.length);
   };
 
+  const gotoProductReviewPage = (product) => {
+    const username = localStorage.getItem('username');
+    navigate('/reviews', { state: { product, userId, username } });
+  };  
+  
   const handleAddToCart = () => {
     const product = products[currentIndex];
     
@@ -65,9 +102,6 @@ const HomePage = () => {
     }
   };
   
-  
-
-  const product = products[currentIndex];
 
   return (
     <div className="home-page-container">
@@ -78,6 +112,7 @@ const HomePage = () => {
           <button className="login-button" onClick={() => navigate('/login')}>Log out</button>
           <button className="cart-button" onClick={() => navigate(`/cart/${userId}`)}>Cart</button>
           <button className="profile-button" onClick={() => navigate(`/profile/${userId}`)}>Profile</button>
+          <button className="profile-button" onClick={() => navigate("/CouponPage")}>Coupon</button>
         </div>
       </div>
 
@@ -100,12 +135,27 @@ const HomePage = () => {
             <p>Lot: {product ? product.lot_id : '-'}</p>
             <p>Price: {product ? `${product.sale_price} Baht` : '-'}</p>
             <p>Amount: {product ? product.RemainLotamount : '-'}</p>
-            <button className="add-to-cart-button" onClick={handleAddToCart}>
-              Add to Cart
-            </button>
-          </div>
-        </div>
 
+            <div className='product-review-cart'>
+                <div className="product-reviews">
+                  <h3>Product Reviews</h3>
+                  <div className="review-summary">
+                    <span className="rating">{averageRating}</span>
+                    <span className="star">⭐</span>
+                    <span className="review-count">({reviewCount} reviews)</span>
+                    <button className="view-all-button" onClick={() => gotoProductReviewPage(product)}>
+                      view all
+                    </button>
+                  </div>
+                </div>
+                <div className='product-cart'>
+                  <button className="add-to-cart-button" onClick={handleAddToCart}>
+                    Add to Cart
+                  </button>
+              </div>
+            </div>
+            </div>
+          </div>
         <button className="nav-arrow right-arrow" onClick={handleNextProduct}>
           &#8594;
         </button>

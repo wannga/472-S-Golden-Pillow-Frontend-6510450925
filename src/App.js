@@ -13,6 +13,16 @@ import RegisterProductPage from './components/RegisterProductPage.js';
 import OrderHistoryPage from './components/OrderHistoryPage.js';
 import ProductListPage from './components/ProductListPage.js';
 import AdminCheckOrderPage from './components/AdminCheckOrderPage.js';
+import CreateCouponPage from './components/CreateCouponPage.js';
+import AddAdminStaffPage from './components/AddAdminStaffPage.js';
+import CheckEmployeeInfoPage from './components/CheckEmployeeInfoPage.js';
+import CouponPage from './components/CouponPage.js';
+import AdminCouponPage from './components/AdminCouponPage.js';
+import ProductReviewPage from './components/ProductReviewPage.js';
+import CheckPackedOrderPage from './components/CheckPackedOrderPage.js'
+import CheckDeliveryOrderPage from './components/CheckDeliveryOrderPage.js'
+import ReviewPage from './components/ReviewPage.js';
+import EditCouponPage from './components/EditCouponPage.js';
 
 function App() {
   return (
@@ -33,6 +43,17 @@ function App() {
           <Route path="/OrderHistory" element={<OrderHistoryPage />} />
           <Route path="/ProductList" element={<ProductListPage />} />
           <Route path="/AdminCheck/:orderId" element={<AdminCheckOrderPage />} />
+          <Route path="/CreateCouponPage" element={<CreateCouponPage />} />
+          <Route path="/addRole" element={<AddAdminStaffPage />} />
+          <Route path="/profileEmployee/:staffId" element={<CheckEmployeeInfoPage />} />
+          <Route path="/CouponPage" element={<CouponPage/>} />
+          <Route path="/AdminCouponPage" element={<AdminCouponPage/>} />
+          <Route path='/reviews' element={<ProductReviewPage/>}/>
+          <Route path="/packStaff/:userId" element={<CheckPackedOrderPage />} />
+          <Route path="/deliverStaff/:userId" element={<CheckDeliveryOrderPage />} />
+          <Route path='/order/review' element={<ReviewPage/>}/>
+          <Route path='/EditCouponPage/:coupon_id' element={<EditCouponPage/>}/>
+
         </Routes>
       </div>
     </Router>
