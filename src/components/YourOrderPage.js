@@ -191,18 +191,6 @@ const YourOrderPage = () => {
             )}
           </div>
 
-          <div className="receipt-container">
-            <h2>Your Receipt</h2>
-            {receiptPath ? (
-              <img
-                src={`http://localhost:13889${receiptPath.startsWith('/') ? receiptPath : `/${receiptPath}`}`}
-                alt="Receipt"
-                className="receipt-image"
-              />
-            ) : (
-              <p>No receipt available.</p>
-            )}
-          </div>
         </div>
 
         {/* Right Section: Order Info and Product List */}
