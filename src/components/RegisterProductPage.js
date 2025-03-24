@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import DOMPurify from 'dompurify';
 import './RegisterProductPage.css';
 import { useNavigate } from 'react-router-dom';
 
@@ -77,7 +78,7 @@ function RegisterProductPage() {
         <div className="image-section">
           {/* Show preview image if selected, else show a placeholder */}
           {previewImage ? (
-            <img src={previewImage} alt="Preview" />
+            <img src={DOMPurify.sanitize(previewImage)} alt="Preview" />
           ) : (
             <img src="pngtree-durian-png-image_9440762.png" alt="Durian" />
           )}
