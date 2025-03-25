@@ -23,13 +23,13 @@ jobs:
 
       - name: Build Docker image with tags
         run: |
-          docker build -t wannga/472-s-golden-pillow-frontend-6510450925:latest \
-                 -t wannga/472-s-golden-pillow-frontend-6510450925:${{ env.TAG }} .
+          docker build -t wanwalai/472-s-golden-pillow-frontend-6510450925:latest \
+                 -t wanwalai/472-s-golden-pillow-frontend-6510450925:${{ env.TAG }} .
 
       - name: Push Docker images
         run: |
-          docker push wannga/472-s-golden-pillow-frontend-6510450925:latest
-          docker push wannga/472-s-golden-pillow-frontend-6510450925:${{ env.TAG }}
+          docker push wanwalai/472-s-golden-pillow-frontend-6510450925:latest
+          docker push wanwalai/472-s-golden-pillow-frontend-6510450925:${{ env.TAG }}
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v1
